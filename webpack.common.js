@@ -1,18 +1,14 @@
 const path = require('path')
 const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const os = require('os')
 
 module.exports = {
     entry: {
-        index: './src/views/index/index.js'
+        app: './src/views/app.tsx'
     },
     resolve: {
         alias: {
             '@': path.resolve(__dirname, 'src'),
-            '@a': path.resolve(__dirname, 'src/assets'),
-            '@c': path.resolve(__dirname, 'src/components'),
-            '@r': path.resolve(__dirname, 'src/redux')
         },
         extensions: ['.tsx', '.ts', '.js', 'jsx'],
     },

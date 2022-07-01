@@ -13,7 +13,7 @@ module.exports = merge(common, {
         disableHostCheck: true,
         historyApiFallback: {
             disableDotRule: true,
-            rewrites: [{ from: /./, to: '/index.html' }]
+            rewrites: [{ from: /./, to: '/app.html' }]
         }
     },
     output: {
@@ -25,9 +25,9 @@ module.exports = merge(common, {
         new HtmlWebpackPlugin({
             title: 'title',
             favicon: 'favicon.ico',
-            filename: 'index.html',
-            template: 'src/views/index/index.html',
-            chunks: ['index', 'vendors', 'runtime']
+            filename: 'app.html',
+            template: 'src/template/app.html',
+            chunks: ['app', 'vendors', 'runtime']
         })
     ],
     module: {

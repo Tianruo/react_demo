@@ -44,11 +44,11 @@ module.exports = merge(common, {
             chunkFilename: '[id].[hash].css'
         }),
         new HtmlWebpackPlugin({
-            title: '知音楼',
+            title: 'app1',
             favicon: 'favicon.ico',
-            filename: '../index.html',
-            template: 'src/views/index/index.html',
-            chunks: ['index', 'vendors', 'runtime']
+            filename: '../app.html',
+            template: 'src/template/app.html',
+            chunks: ['app', 'vendors', 'runtime']
         })
     ],
     module: {
