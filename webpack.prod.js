@@ -51,7 +51,7 @@ module.exports = merge(common, {
             template: 'src/template/app.html',
             chunks: ['app', 'vendors', 'runtime']
         }),
-        new BundleAnalyzerPlugin(),
+        // new BundleAnalyzerPlugin(),
     ],
     module: {
         rules: [
