@@ -5,6 +5,7 @@ const TerserPlugin = require('terser-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = merge(common, {
     mode: 'production',
@@ -49,18 +50,21 @@ module.exports = merge(common, {
             filename: '../app.html',
             template: 'src/template/app.html',
             chunks: ['app', 'vendors', 'runtime']
-        })
+        }),
+        new BundleAnalyzerPlugin(),
     ],
     module: {
         rules: [
             {
-                test: /\.scss$/,
+                test: /\.less$/,
                 use: [
                     MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader',
                         options: {
-                            modules: true,
+                            modules: {
+                                localIdentName: '[local]--[hash:base64:5]'
+                            },
                             importLoaders: 2
                         }
                     },
@@ -68,10 +72,7 @@ module.exports = merge(common, {
                         loader: 'postcss-loader'
                     },
                     {
-                        loader: 'sass-loader',
-                        options: {
-                            implementation: require('sass')
-                        }
+                        loader: 'less-loader',
                     }
                 ]
             },
@@ -80,7 +81,6 @@ module.exports = merge(common, {
                 include: [
                     /node_modules[\\/]antd/,
                     /node_modules[\\/]normalize\.css/,
-                    /node_modules[\\/]braft-editor/,
                     /iconfont\.css$/
                 ],
                 use: [
