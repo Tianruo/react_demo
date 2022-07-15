@@ -5,6 +5,7 @@ const TerserPlugin = require('terser-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const CompressionPlugin = require("compression-webpack-plugin")
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = merge(common, {
@@ -50,6 +51,11 @@ module.exports = merge(common, {
             filename: '../app.html',
             template: 'src/template/app.html',
             chunks: ['app', 'vendors', 'runtime']
+        }),
+        new CompressionPlugin({
+            algorithm: "gzip",
+            threshold: 8192,
+            // deleteOriginalAssets: true,
         }),
         // new BundleAnalyzerPlugin(),
     ],
