@@ -11,10 +11,11 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 module.exports = merge(common, {
     mode: 'production',
     devtool: false,
+    target: 'web',
     output: {
         filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist/static'),
-        // publicPath: require('./src/config.json').cdn
+        // publicPath: '/'
     },
     optimization: {
         minimizer: [
@@ -48,7 +49,7 @@ module.exports = merge(common, {
         new HtmlWebpackPlugin({
             title: 'app1',
             favicon: 'favicon.ico',
-            filename: '../app.html',
+            filename: '../index.html',
             template: 'src/template/app.html',
             chunks: ['app', 'vendors', 'runtime']
         }),

@@ -40,7 +40,7 @@ class TRDom extends HTMLElement {
     }
 }
 
-customElements.define('tr-dom', TRDom);
+// customElements.define('tr-dom', TRDom);
 
 class Home extends React.Component<IProps, IState> {
     componentDidMount() {
