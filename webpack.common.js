@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+require('dotenv').config()
 
 module.exports = {
     entry: {
@@ -18,6 +19,10 @@ module.exports = {
         new webpack.IgnorePlugin({
             resourceRegExp: /^\.\/locale$/,
             contextRegExp: /moment$/
+        }),
+        new webpack.EnvironmentPlugin({
+            REACT_APP_SUPABASE_URL: process.env.REACT_APP_SUPABASE_URL,
+            REACT_APP_SUPABASE_ANON_KEY: process.env.REACT_APP_SUPABASE_ANON_KEY,
         })
     ],
     optimization: {

@@ -1,0 +1,50 @@
+.box{
+    flex: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    .messagecontainer{
+        width: 100%;
+        height: 400px;
+        overflow-y: scroll;
+        color: #333;
+        padding-right: 10px;
+        .info{
+            margin-top: 10px;
+            .name{
+                color: #aaa;
+            }
+            .msg{
+                margin-top: 2px;
+                max-width: 80%;
+                padding: 10px;
+                background: #eee;
+                border-radius: 5px;
+                display: inline-block;
+            }
+        }
+        .mineinfo{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            .msg{
+                background: #deeffb;
+            }
+        }
+    }
+    .inputcontainer{
+        width: 100%;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        >input{
+            width: 100%;
+        }
+        >button{
+            display: block;
+            margin-top: 10px;
+        }
+    }
+}
