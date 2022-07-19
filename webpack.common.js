@@ -2,7 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 require('dotenv').config()
-console.log(11111, process.env.REACT_APP_SUPABASE_URL)
+console.log(11111, process.env.TIAN_RUO)
 module.exports = {
     entry: {
         app: './src/views/app.tsx'
