@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react'
 import { login_api_login, login_api_regist } from '@/server/login'
 import { useHistory } from 'react-router-dom'
+import styles from './login.less'
 
-type IRef = HTMLInputElement | null 
+type IRef = HTMLInputElement | null
 
 const Login: React.FC = () => {
     const loginemailref = useRef<IRef>(null)
@@ -26,7 +27,7 @@ const Login: React.FC = () => {
 
         alert('login ok')
 
-        history.push('/')
+        history.push('/home')
     }
 
     const handleRegistClick = async () => {
@@ -45,21 +46,30 @@ const Login: React.FC = () => {
     }
 
     return (
-        <div>
-            <div>
-                <h3>login</h3>
-                <div><input type="text" placeholder="email" ref={loginemailref} /></div>
-                <div><input type="text" placeholder="password" ref={loginpassref} /></div>
-                <div><button onClick={handleLoginClick}>login</button></div>
+        <div className={styles.box}>
+            <h3>login</h3>
+            <div className={styles.info}>
+                <input type="text" placeholder="email" ref={loginemailref} />
             </div>
-            <hr />
-            <button onClick={setHasaccount.bind(null, false)}>regist account</button>
+            <div className={styles.info}>
+                <input type="text" placeholder="password" ref={loginpassref} />
+            </div>
+            <div className={styles.login} onClick={handleLoginClick}>
+                login
+            </div>
+            <span className={styles.btn} onClick={setHasaccount.bind(null, false)}>regist account</span>
             {!hasaccount && (
                 <div>
                     <h3>regist</h3>
-                    <div><input type="text" placeholder="email" ref={registemailref} /></div>
-                    <div><input type="text" placeholder="password" ref={registpassref} /></div>
-                    <div><button onClick={handleRegistClick}>regist</button></div>
+                    <div>
+                        <input type="text" placeholder="email" ref={registemailref} />
+                    </div>
+                    <div>
+                        <input type="text" placeholder="password" ref={registpassref} />
+                    </div>
+                    <div className={styles.login} onClick={handleRegistClick}>
+                        regist
+                    </div>
                 </div>
             )}
         </div>

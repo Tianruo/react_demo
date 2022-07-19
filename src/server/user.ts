@@ -31,6 +31,10 @@ export const user_getauthuser = () => {
     return session?.user
 }
 
+supabase.auth.onAuthStateChange((event, session) => {
+    anon_user = session?.user || null
+})
+
 export const onUserChange = (callback: (user: Session['user']) => void) => {
     const res = supabase.auth.onAuthStateChange((event, session) => {
         anon_user = session?.user || null

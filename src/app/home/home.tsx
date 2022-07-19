@@ -11,9 +11,12 @@ const App: React.FC = () => {
     const history = useHistory()
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        if (!anon_user) return history.push('/login')
+    if (!anon_user) {
+        history.push('/login')
+        return null
+    } 
 
+    useEffect(() => {
         const getuser = async () => {
             const user = await user_getuser()
             user && dispatch(userActios.setUser({
