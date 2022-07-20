@@ -3,11 +3,13 @@ import styles from './chatroom.less'
 import { AppStore } from '@/store'
 import { useSelector, useDispatch } from 'react-redux'
 import {
-    on_message_change,
+    message_ws_connect,
     message_api_send,
     IMessage,
     message_api_pull,
-    remove_all_message_change
+    message_ws_addlistener,
+    message_ws_removealllistener,
+    message_ws_disconnect,
 } from '@/server/message'
 
 type IRef = HTMLInputElement | null
@@ -24,15 +26,19 @@ const App: React.FC = () => {
             if (res.error) return console.error(res)
 
             setMessageList(res.data.reverse())
-            console.log('messagelist', res.data)
+            console.log('messagelist', res.data)            
         }
 
         initMessage()
+
+        message_ws_connect()
+
+        return () => { message_ws_disconnect() }
     }, [])
 
     useEffect(() => {
-        remove_all_message_change()
-        on_message_change(data => {
+        message_ws_removealllistener()
+        message_ws_addlistener(data => {
             setMessageList([...messageList, data])
         })
 

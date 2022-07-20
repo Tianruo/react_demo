@@ -62,7 +62,7 @@ const Login: React.FC = () => {
             <div className={styles.login} onClick={handleLoginClick}>
                 login
             </div>
-            <span className={styles.btn} onClick={setHasaccount.bind(null, false)}>regist account</span>
+            <span className={styles.btn} onClick={setHasaccount.bind(null, !hasaccount)}>regist account</span>
             {!hasaccount && (
                 <div>
                     <h3>regist</h3>

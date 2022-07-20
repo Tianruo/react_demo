@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import styles from './userinfo.less'
 import { AppStore } from '@/store'
 import { userActios } from '@/store/user'
@@ -10,10 +10,11 @@ type IRef = HTMLInputElement | null
 const UserInfo: React.FC = () => {
     const dispatch = useDispatch()
     const nameRef = useRef<IRef>(null)
+    const [text, setText] = useState<string>('')
     const user = useSelector((store: AppStore) => store.user);
 
     const handleSubmitClick = async () => {
-        const newname = nameRef.current?.value
+        const newname = text
 
         if (newname) {
             const res = await user_api_change_name(newname)
@@ -22,7 +23,17 @@ const UserInfo: React.FC = () => {
             dispatch(userActios.setUser({
                 username: newname
             }));
+
+            setText('')
         }
+    }
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setText(e.target.value)
+    }
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+        if (e.key === 'Enter') handleSubmitClick()
     }
 
     return (
@@ -35,7 +46,7 @@ const UserInfo: React.FC = () => {
                 <div><span>color：</span>{user.usercolor}</div>
             </div>
             <div className={styles.modify}>
-                <input type="text" placeholder="change name" ref={nameRef} />
+                <input type="text" placeholder="change name" ref={nameRef} value={text} onChange={handleChange} onKeyDown={handleKeyDown} />
                 <button onClick={handleSubmitClick}>submit</button>
             </div>
         </div>
