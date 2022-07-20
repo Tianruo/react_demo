@@ -33,7 +33,6 @@ const App: React.FC = () => {
     useEffect(() => {
         remove_all_message_change()
         on_message_change(data => {
-            console.log('newmsg', messageList, data)
             setMessageList([...messageList, data])
         })
 

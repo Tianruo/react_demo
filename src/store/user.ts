@@ -16,12 +16,16 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface IUserStore {
     userid: string;
+    useraccount?: string;
+    usertoken?: string;
     username?: string;
     usercolor?: string;
 }
 
 const userStore: IUserStore = {
     userid: '',
+    useraccount: '',
+    usertoken: '',
     username: '访客',
     usercolor: '',
 };
@@ -38,6 +42,7 @@ const userSlice = createSlice({
             // };
             if (action.payload.userid) state.userid = action.payload.userid
             if (action.payload.username) state.username = action.payload.username
+            if (action.payload.useraccount) state.useraccount = action.payload.useraccount
             if (action.payload.usercolor) state.usercolor = action.payload.usercolor
         }
     },

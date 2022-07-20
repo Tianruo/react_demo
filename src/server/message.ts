@@ -1,5 +1,5 @@
 import supabase from './index'
-import { anon_user, user } from './user'
+import { user } from './user'
 import { RealtimeSubscription } from '@supabase/supabase-js'
 
 let message_subscribtion: RealtimeSubscription | null = null
@@ -31,7 +31,7 @@ export const remove_all_message_change = () => {
 
 export const message_api_send = async(message: string) => {
     const res = await supabase.from('message').insert({
-        user_id: anon_user?.id,
+        user_id: user?.user_id,
         user_name: user?.user_name,
         user_color: user?.user_color,
         message

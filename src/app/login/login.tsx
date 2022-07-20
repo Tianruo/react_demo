@@ -17,13 +17,18 @@ const Login: React.FC = () => {
         const email = loginemailref.current?.value
         const pass = loginpassref.current?.value
 
-        if (!email || !pass) return alert('no email or password')
+        if (!email || !pass) return alert('no account or password')
 
         const res = await login_api_login(email, pass)
 
         console.log(res)
 
         if (res.error) return alert(res.error.message)
+
+        if (!res.data.length) return alert('account or password incorrect')
+
+        window.localStorage.setItem('account', res.data[0].user_account)
+        window.localStorage.setItem('token', res.data[0].user_token)
 
         alert('login ok')
 
@@ -34,7 +39,7 @@ const Login: React.FC = () => {
         const email = registemailref.current?.value
         const pass = registpassref.current?.value
 
-        if (!email || !pass) return alert('no email or password')
+        if (!email || !pass) return alert('no account or password')
 
         const res = await login_api_regist(email, pass)
 
@@ -49,7 +54,7 @@ const Login: React.FC = () => {
         <div className={styles.box}>
             <h3>login</h3>
             <div className={styles.info}>
-                <input type="text" placeholder="email" ref={loginemailref} />
+                <input type="text" placeholder="account" ref={loginemailref} />
             </div>
             <div className={styles.info}>
                 <input type="text" placeholder="password" ref={loginpassref} />
@@ -62,7 +67,7 @@ const Login: React.FC = () => {
                 <div>
                     <h3>regist</h3>
                     <div>
-                        <input type="text" placeholder="email" ref={registemailref} />
+                        <input type="text" placeholder="account" ref={registemailref} />
                     </div>
                     <div>
                         <input type="text" placeholder="password" ref={registpassref} />
