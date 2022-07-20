@@ -3,10 +3,28 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    color: #1e4645;
+    padding: 0 0 15px 20px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    background: #fbfbfb;
+    h3{
+        color: #333;
+    }
     .infos{
         margin-right: 20px;
         >div{
-            margin-top: 10px;
+            padding: 15px 0px;
+            >span:first-child{
+                color: #333;
+                display: block;
+                font-size: 16px;
+                width: 80px;
+            }
+            >span:last-child{
+                flex: 1;
+                font-size: 12px;
+            }
         }
     }
     .modify{

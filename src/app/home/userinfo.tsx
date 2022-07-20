@@ -40,14 +40,14 @@ const UserInfo: React.FC = () => {
         <div className={styles.box}>
             <div className={styles.infos}>
                 <h3>User</h3>
-                <div><span>name：</span>{user.username}</div>
-                <div><span>account：</span>{user.useraccount}</div>
-                <div><span>id：</span>{user.userid}</div>
-                <div><span>color：</span>{user.usercolor}</div>
+                <div><span>name</span><span>{user.username}</span></div>
+                <div><span>account</span><span>{user.useraccount}</span></div>
+                <div><span>userid</span><span>{user.userid}</span></div>
+                <div><span>color</span><span>{user.usercolor}</span></div>
             </div>
             <div className={styles.modify}>
                 <input type="text" placeholder="change name" ref={nameRef} value={text} onChange={handleChange} onKeyDown={handleKeyDown} />
-                <button onClick={handleSubmitClick}>submit</button>
+                {/* <button onClick={handleSubmitClick}>submit</button> */}
             </div>
         </div>
     )

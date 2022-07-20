@@ -72,7 +72,7 @@ const App: React.FC = () => {
                 {messageList.map(m =>
                     m.user_id === user.userid ? (
                         <div key={m.id} className={`${styles.info} ${styles.mineinfo}`}>
-                            <div className={styles.name}>{m.user_name}：</div>
+                            <div className={styles.name}>{m.user_name}</div>
                             <div className={styles.msg}>{m.message}</div>
                         </div>
                     ) : (
@@ -91,7 +91,7 @@ const App: React.FC = () => {
                     onChange={handleTextChange}
                     onKeyDown={handleKeyDown}
                 />
-                <button onClick={handleSendBtnClick}>send</button>
+                {/* <button onClick={handleSendBtnClick}>send</button> */}
             </div>
         </div>
     )
