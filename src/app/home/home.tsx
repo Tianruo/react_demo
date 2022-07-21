@@ -23,7 +23,7 @@ const App: React.FC = () => {
         const getuser = async () => {
             const res = await user_api_getuser(account, token)
 
-            if (res.error) return history.push('/login')
+            if (res.error || !res.data.length) return history.push('/login')
 
             dispatch(userActios.setUser({
                 userid: res.data[0].user_id,
