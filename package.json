@@ -4,6 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
+        "prepare": "",
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "webpack-dev-server --config webpack.dev.js",
         "build": "webpack --config webpack.prod.js"
@@ -11,6 +12,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@byted-blocks/volcano-engine-minidoc": "^0.0.2",
         "@reduxjs/toolkit": "^1.8.3",
         "@supabase/supabase-js": "^1.35.4",
         "@tianruo/pack1": "^0.0.6",

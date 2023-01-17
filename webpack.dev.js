@@ -14,12 +14,18 @@ module.exports = merge(common, {
         historyApiFallback: {
             disableDotRule: true,
             rewrites: [{ from: /./, to: '/app.html' }]
-        }
+        },
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        },
+        allowedHosts: ['localhost', 'localhost:3001'],
     },
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, 'dist'),
-        publicPath: '/'
+        libraryTarget: 'umd',
+        globalObject: 'window',
+        publicPath: 'http://localhost:7777/',
     },
     plugins: [
         new HtmlWebpackPlugin({

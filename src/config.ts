@@ -1,0 +1,6 @@
+export default {
+    // REACT_APP_SUPABASE_URL: "https://mmlamugvvhuujpcrsrsa.supabase.co",
+    // REACT_APP_SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1tbGFtdWd2dmh1dWpwY3JzcnNhIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTgxMzA0NzgsImV4cCI6MTk3MzcwNjQ3OH0.Ei0ALix6XiRVG1XouNhLvEflvCqU9s6dB3mFXWIAP9M",
+    REACT_APP_SUPABASE_URL: "https://hbrechxeinghzzcvkmdu.supabase.co",
+    REACT_APP_SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhicmVjaHhlaW5naHp6Y3ZrbWR1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTgzNzM4OTYsImV4cCI6MTk3Mzk0OTg5Nn0.qyepCmAn4TQxTUcidGARDqT5nAhKWeJZW9j1vARr4pM",
+}

@@ -6,6 +6,7 @@ import 'normalize.css'
 import './app.less'
 import store from '@/store'
 import Login from '@/app/login/login'
+import Index from '@/app/home/index2'
 import Home from '@/app/home/home'
 import Info from '@/app/info'
 // import { ConfigProvider } from 'antd'
@@ -17,7 +18,7 @@ const App: React.FC = () => {
             <Router>
                 {/* <ConfigProvider locale={zhCN}> */}
                     <Switch>
-                        <Route path={'/'} exact={true} component={Home} />
+                        <Route path={'/'} exact={true} component={Index} />
                         <Route path={'/login'} component={Login} />
                         <Route path={'/home'} component={Home} />
                         <Route path={'/info'} component={Info} />

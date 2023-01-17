@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { login_api_login, login_api_regist } from '@/server/login'
 import { useHistory } from 'react-router-dom'
 import styles from './login.less'
+import AAA from './test';
 
 type IRef = HTMLInputElement | null
 
@@ -12,8 +13,16 @@ const Login: React.FC = () => {
     const registpassref = useRef<IRef>(null)
     const history = useHistory()
     const [hasaccount, setHasaccount] = useState<boolean>(true)
+    const [a, seta] = useState<any>();
 
-    const handleLoginClick = async () => {
+    useEffect(() => {
+        console.log('login mount');
+        setInterval(() => {
+            seta(Date.now());
+        }, 1000);
+    }, []);
+
+    const handleLoginClick = useCallback(async () => {
         const email = loginemailref.current?.value
         const pass = loginpassref.current?.value
 
@@ -33,7 +42,7 @@ const Login: React.FC = () => {
         alert('login ok')
 
         history.push('/home')
-    }
+    }, []);
 
     const handleRegistClick = async () => {
         const email = registemailref.current?.value
@@ -52,7 +61,8 @@ const Login: React.FC = () => {
 
     return (
         <div className={styles.box}>
-            <h3>login</h3>
+            <h3>login{a}</h3>
+            <AAA hasaccount={hasaccount} handleLoginClick={handleLoginClick} />
             <div className={styles.info}>
                 <input type="text" placeholder="account" ref={loginemailref} />
             </div>
