@@ -2,6 +2,7 @@ const path = require('path')
 const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = merge(common, {
     mode: 'development',
@@ -34,7 +35,8 @@ module.exports = merge(common, {
             filename: 'app.html',
             template: 'src/template/app.html',
             chunks: ['app', 'vendors', 'runtime']
-        })
+        }),
+        // new BundleAnalyzerPlugin(),
     ],
     module: {
         rules: [
@@ -47,8 +49,11 @@ module.exports = merge(common, {
                     {
                         loader: 'css-loader',
                         options: {
+                            // modules: false,
                             modules: {
-                                localIdentName: '[local]--[hash:base64:5]'
+                                localIdentName: '[local]--[hash:base64:5]',
+                                // namedExport: true,
+                                exportLocalsConvention: "camelCase",
                             },
                             importLoaders: 2
                         }
@@ -63,11 +68,11 @@ module.exports = merge(common, {
             },
             {
                 test: /\.css$/,
-                include: [
-                    /node_modules[\\/]antd/,
-                    /node_modules[\\/]normalize\.css/,
-                    /iconfont\.css$/
-                ],
+                // include: [
+                //     /node_modules[\\/]antd/,
+                //     /node_modules[\\/]normalize\.css/,
+                //     /iconfont\.css$/
+                // ],
                 use: [
                     {
                         loader: 'style-loader'

@@ -58,7 +58,7 @@ module.exports = merge(common, {
             threshold: 8192,
             // deleteOriginalAssets: true,
         }),
-        // new BundleAnalyzerPlugin(),
+        new BundleAnalyzerPlugin(),
     ],
     module: {
         rules: [
@@ -85,11 +85,11 @@ module.exports = merge(common, {
             },
             {
                 test: /\.css$/,
-                include: [
-                    /node_modules[\\/]antd/,
-                    /node_modules[\\/]normalize\.css/,
-                    /iconfont\.css$/
-                ],
+                // include: [
+                //     /node_modules[\\/]antd/,
+                //     /node_modules[\\/]normalize\.css/,
+                //     /iconfont\.css$/
+                // ],
                 use: [
                     MiniCssExtractPlugin.loader,
                     {
